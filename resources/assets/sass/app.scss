@@ -1,0 +1,47 @@
+// http://ironodatinfo/rgb.php?color=EF845C
+// #EF845C
+// 
+$body-bg: #c8f05b;
+$text-color: #f05bc8;
+
+$brand-primary: #5bf083;
+
+$btn-primary-color: #000;
+$navbar-defult-bg: $body-bg;
+
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+.dummy {
+	color: #EF845C;
+	color: #C8f05B;
+	color: #5BF083;
+	color: #5BC8F0;
+color: #835BF0;
+color: #F05BC8;
+}
+* { margin: 0; padding: 0;}
+
+body {
+}
+.container {
+	width: 80%;
+}
+
+.form-actions {
+	text-align: center;
+}
+
+@media (min-width: $screen-sm-min) {
+	.form-container {
+		
+	}
+	.form-control {
+		margin-bottom: 24px;
+	}
+
+	.center {
+		text-align: center;
+		form {
+			display: inline-block;
+		}
+	}
+}
