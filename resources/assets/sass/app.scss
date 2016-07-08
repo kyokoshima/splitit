@@ -1,47 +1,45 @@
 // http://ironodatinfo/rgb.php?color=EF845C
 // #EF845C
 // 
-$body-bg: #c8f05b;
-$text-color: #f05bc8;
 
-$brand-primary: #5bf083;
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
+$body-bg: #f5f1e9;
+$text-color: #6b6b6b;
 
-$btn-primary-color: #000;
+$brand-primary: #0c555D;
+
+$btn-primary-color: #f5f1e9;
 $navbar-defult-bg: $body-bg;
+$font-family-sans-serif: 'Noto Sans JP', sans-serif;
 
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 .dummy {
-	color: #EF845C;
-	color: #C8f05B;
-	color: #5BF083;
-	color: #5BC8F0;
-color: #835BF0;
-color: #F05BC8;
+	color: #f5f1e9;
+	color: #ff6860;
+	color: #ccdfcc;
+	color: #262626;
+	color: #0c555d;
+	color: #F05BC8;
 }
 * { margin: 0; padding: 0;}
 
 body {
 }
-.container {
-	width: 80%;
+
+.form-group {
+	.thumbnail {
+		max-width: 96px;
+		margin-bottom: 0;
+	}
+	#table-more {
+
+	}
 }
 
-.form-actions {
-	text-align: center;
+#member-table {
+	margin: 0 auto 12px;
+	width: 95%;
 }
+@media (max-width: $screen-sm-min) {
 
-@media (min-width: $screen-sm-min) {
-	.form-container {
-		
-	}
-	.form-control {
-		margin-bottom: 24px;
-	}
-
-	.center {
-		text-align: center;
-		form {
-			display: inline-block;
-		}
-	}
 }

@@ -1,5 +1,6 @@
+process.env.DISABLE_NOTIFIER = true;
 var elixir = require('laravel-elixir');
-
+var plumber = require('gulp-plumber');
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -10,11 +11,20 @@ var elixir = require('laravel-elixir');
  | file for our application, as well as publishing vendor resources.
  |
  */
+ elixir.config.js.browserify.watchify = {
+    enabled: true,
+    options: {
+        poll: true
+    }
+}
 
 elixir(function(mix) {
     var bootstrapPath = 'node_modules/bootstrap-sass/assets'
-		mix.sass('app.scss')
-			.copy(bootstrapPath + '/fonts', 'public/fonts')
-			.copy(bootstrapPath + '/javascripts/bootstrap.min.js', 'public/js')
-			.copy('node_modules/jquery/dist/jquery.min.js', 'public/js');
+			mix.sass('app.scss')
+				.copy(bootstrapPath + '/fonts', 'public/fonts')
+				.copy(bootstrapPath + '/javascripts/bootstrap.min.js', 'public/js')
+				.copy('node_modules/jquery/dist/jquery.min.js', 'public/js')
+				.browserify('app.js');
+
 });
+
