@@ -38459,235 +38459,194 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 
 var MemberTable = _react2.default.createClass({
-  displayName: 'MemberTable',
+	displayName: 'MemberTable',
 
-  render: function render() {
-    return _react2.default.createElement(
-      _reactBootstrap.Table,
-      { condenced: true },
-      _react2.default.createElement(
-        'caption',
-        null,
-        this.props.captions.top
-      ),
-      _react2.default.createElement(
-        'thead',
-        null,
-        _react2.default.createElement(
-          'tr',
-          null,
-          _react2.default.createElement(
-            'th',
-            null,
-            this.props.captions.col.seq
-          ),
-          _react2.default.createElement(
-            'th',
-            null,
-            this.props.captions.col.name
-          ),
-          _react2.default.createElement('th', null)
-        )
-      ),
-      _react2.default.createElement(
-        'tbody',
-        null,
-        this.props.users.map(function (user, index) {
-          return _react2.default.createElement(
-            'tr',
-            { key: user.id },
-            _react2.default.createElement(
-              'td',
-              null,
-              index
-            ),
-            _react2.default.createElement(
-              'td',
-              null,
-              user.name
-            ),
-            _react2.default.createElement(
-              'td',
-              null,
-              _react2.default.createElement(
-                _reactBootstrap.Button,
-                { bsStyle: 'danger', bsSize: 'xsmall' },
-                _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'remove' })
-              )
-            )
-          );
-        })
-      ),
-      _react2.default.createElement(
-        'tfoot',
-        null,
-        _react2.default.createElement(AddMemberModal, { label: this.props.captions.addMember })
-      )
-    );
-  }
+	render: function render() {
+		return _react2.default.createElement(
+			_reactBootstrap.Table,
+			{ condenced: true },
+			_react2.default.createElement(
+				'caption',
+				null,
+				this.props.captions.top
+			),
+			_react2.default.createElement(
+				'thead',
+				null,
+				_react2.default.createElement(
+					'tr',
+					null,
+					_react2.default.createElement(
+						'th',
+						null,
+						this.props.captions.col.seq
+					),
+					_react2.default.createElement(
+						'th',
+						null,
+						this.props.captions.col.name
+					),
+					_react2.default.createElement('th', null)
+				)
+			),
+			_react2.default.createElement(
+				'tbody',
+				null,
+				this.props.users.map(function (user, index) {
+					return _react2.default.createElement(
+						'tr',
+						{ key: user.id },
+						_react2.default.createElement(
+							'td',
+							null,
+							index
+						),
+						_react2.default.createElement(
+							'td',
+							null,
+							user.name
+						),
+						_react2.default.createElement(
+							'td',
+							null,
+							_react2.default.createElement(
+								_reactBootstrap.Button,
+								{ bsStyle: 'danger', bsSize: 'xsmall' },
+								_react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'remove' })
+							)
+						)
+					);
+				})
+			),
+			_react2.default.createElement(
+				'tfoot',
+				null,
+				_react2.default.createElement(
+					'tr',
+					null,
+					_react2.default.createElement(
+						'td',
+						null,
+						_react2.default.createElement(AddMemberModal, { captions: this.props.captions })
+					)
+				)
+			)
+		);
+	}
 });
 // var Collapse = ReactBootstrap.Collapse;
 
 var AddMemberModal = _react2.default.createClass({
-  displayName: 'AddMemberModal',
-  getInitialState: function getInitialState() {
-    return { showModal: false };
-  },
-  close: function close() {
-    this.setState({ showModal: false });
-  },
-  open: function open() {
-    this.setState({ showModal: true });
-  },
-  render: function render() {
-    var popover = _react2.default.createElement(
-      _reactBootstrap.Popover,
-      { title: 'popover' },
-      'very popover. such engagement'
-    );
-    var tooltip = _react2.default.createElement(
-      _reactBootstrap.Tooltip,
-      null,
-      'wow.'
-    );
-
-    return _react2.default.createElement(
-      'div',
-      null,
-      _react2.default.createElement(
-        _reactBootstrap.Button,
-        { bsStyle: 'success', onClick: this.open },
-        this.props.label
-      ),
-      _react2.default.createElement(
-        _reactBootstrap.Modal,
-        { show: this.state.showModal, onHide: this.close },
-        _react2.default.createElement(
-          _reactBootstrap.Modal.Header,
-          { closeButton: true },
-          _react2.default.createElement(
-            _reactBootstrap.Modal.Title,
-            null,
-            'Modal heading'
-          )
-        ),
-        _react2.default.createElement(
-          _reactBootstrap.Modal.Body,
-          null,
-          _react2.default.createElement(
-            'h4',
-            null,
-            'Text in a modal'
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            'Duis mollis, est non commodo luctus, nisi erat porttitor ligula.'
-          ),
-          _react2.default.createElement(
-            'h4',
-            null,
-            'Popover in a modal'
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            'there is a ',
-            _react2.default.createElement(
-              _reactBootstrap.OverlayTrigger,
-              { overlay: popover },
-              _react2.default.createElement(
-                'a',
-                { href: '#' },
-                'popover'
-              )
-            ),
-            ' here'
-          ),
-          _react2.default.createElement(
-            'h4',
-            null,
-            'Tooltips in a modal'
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            'there is a ',
-            _react2.default.createElement(
-              _reactBootstrap.OverlayTrigger,
-              { overlay: tooltip },
-              _react2.default.createElement(
-                'a',
-                { href: '#' },
-                'tooltip'
-              )
-            ),
-            ' here'
-          ),
-          _react2.default.createElement('hr', null),
-          _react2.default.createElement(
-            'h4',
-            null,
-            'Overflowing text to show scroll behavior'
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            'Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.'
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            'Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.'
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            'Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.'
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            'Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.'
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            'Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.'
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            'Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.'
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            'Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.'
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            'Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.'
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            'Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.'
-          )
-        ),
-        _react2.default.createElement(
-          _reactBootstrap.Modal.Footer,
-          null,
-          _react2.default.createElement(
-            _reactBootstrap.Button,
-            { onClick: this.close },
-            'Close'
-          )
-        )
-      )
-    );
-  }
+	displayName: 'AddMemberModal',
+	getInitialState: function getInitialState() {
+		return { add: false, showModal: false };
+	},
+	close: function close() {
+		this.setState({ showModal: false });
+	},
+	open: function open() {
+		this.setState({ showModal: true });
+	},
+	switchBody: function switchBody() {
+		this.setState({ add: true });
+	},
+	render: function render() {
+		var modalBody;
+		if (!this.state.add) {
+			modalBody = _react2.default.createElement(
+				_reactBootstrap.Table,
+				{ condenced: true },
+				_react2.default.createElement(
+					'thead',
+					null,
+					_react2.default.createElement(
+						'tr',
+						null,
+						_react2.default.createElement(
+							'th',
+							null,
+							this.props.captions.col.name
+						)
+					)
+				),
+				_react2.default.createElement(
+					'tbody',
+					null,
+					candidateMembers.map(function (member, index) {
+						return _react2.default.createElement(
+							'tr',
+							{ key: member.id },
+							_react2.default.createElement(
+								'td',
+								null,
+								member.name
+							)
+						);
+					})
+				),
+				_react2.default.createElement(
+					'tfoot',
+					null,
+					_react2.default.createElement(
+						'tr',
+						null,
+						_react2.default.createElement(
+							'td',
+							null,
+							_react2.default.createElement(
+								_reactBootstrap.Button,
+								{ bsStyle: 'success', bsSize: 'xs', onClick: this.switchBody },
+								this.props.captions.newMember
+							)
+						)
+					)
+				)
+			);
+		} else {
+			modalBody = _react2.default.createElement(
+				'div',
+				null,
+				'Add New Member'
+			);
+		}
+		modalBody = _react2.default.createElement(
+			_reactBootstrap.Modal.Body,
+			null,
+			modalBody
+		);
+		return _react2.default.createElement(
+			'div',
+			null,
+			_react2.default.createElement(
+				_reactBootstrap.Button,
+				{ bsStyle: 'success', onClick: this.open },
+				this.props.captions.addMember
+			),
+			_react2.default.createElement(
+				_reactBootstrap.Modal,
+				{ show: this.state.showModal, onHide: this.close },
+				_react2.default.createElement(
+					_reactBootstrap.Modal.Header,
+					{ closeButton: true },
+					_react2.default.createElement(
+						_reactBootstrap.Modal.Title,
+						null,
+						this.props.captions.addMember
+					)
+				),
+				modalBody,
+				_react2.default.createElement(
+					_reactBootstrap.Modal.Footer,
+					null,
+					_react2.default.createElement(
+						_reactBootstrap.Button,
+						{ onClick: this.close },
+						'Close'
+					)
+				)
+			)
+		);
+	}
 });
 _reactDom2.default.render(_react2.default.createElement(MemberTable, { captions: captions, users: users }), document.getElementById('member-table'));
 

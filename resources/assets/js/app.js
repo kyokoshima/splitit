@@ -37,59 +37,66 @@ const MemberTable = React.createClass({
 						})}
 					</tbody>
 					<tfoot>
-						<AddMemberModal label={this.props.captions.addMember}/>
+						<tr><td>
+						<AddMemberModal captions={this.props.captions}/>
+						</td></tr>
 					</tfoot>
 				</Table>
 			)
 		}
 	});
 const AddMemberModal = React.createClass({
-	getInitialState() { return {showModal: false };},
-	close() { this.setState({ showModal: false });},
-	open() { this.setState({ showModal: true });},
+	
+	getInitialState() { return { add: false, showModal: false };},
+	close() { this.setState({ showModal: false }); },
+	open() { this.setState({ showModal: true }); },
+	switchBody() { this.setState( {add: true}); },
  	render() {
-    let popover = <Popover title="popover">very popover. such engagement</Popover>;
-    let tooltip = <Tooltip>wow.</Tooltip>;
+ 		var modalBody;
+		if (!this.state.add) {
+			modalBody = 
+      	<Table condenced>
+        	<thead>
+        		<tr><th>{this.props.captions.col.name}</th></tr>
+        	</thead>
+        	<tbody>
+        		{candidateMembers.map(function(member, index){
+        			return(
+        				<tr key={member.id}>
+        					<td>{member.name}</td>
+        				</tr>
+        				)
+        		})}
+        	</tbody>
+        	<tfoot>
+        		<tr><td>
+        		<Button bsStyle="success" bsSize="xs" onClick={this.switchBody}>
+        			{this.props.captions.newMember}
+        		</Button>
+        		</td></tr>
+        	</tfoot>
+        </Table>
+			} else {
+				modalBody = <div>Add New Member</div>
+			}
+			modalBody = <Modal.Body>{modalBody}</Modal.Body>
+	    return (
+	      <div>
+	        <Button bsStyle="success" onClick={this.open}>
+	          {this.props.captions.addMember}
+	        </Button>
 
-    return (
-      <div>
-        <Button bsStyle="success" onClick={this.open}>
-          {this.props.label}
-        </Button>
-
-        <Modal show={this.state.showModal} onHide={this.close}>
-          <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <h4>Text in a modal</h4>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-
-            <h4>Popover in a modal</h4>
-            <p>there is a <OverlayTrigger overlay={popover}><a href="#">popover</a></OverlayTrigger> here</p>
-
-            <h4>Tooltips in a modal</h4>
-            <p>there is a <OverlayTrigger overlay={tooltip}><a href="#">tooltip</a></OverlayTrigger> here</p>
-
-            <hr />
-
-            <h4>Overflowing text to show scroll behavior</h4>
-            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={this.close}>Close</Button>
-          </Modal.Footer>
-        </Modal>
-      </div>
-    );
+	        <Modal show={this.state.showModal} onHide={this.close}>
+	          <Modal.Header closeButton>
+	            <Modal.Title>{this.props.captions.addMember}</Modal.Title>
+	          </Modal.Header>
+	          {modalBody}
+	          <Modal.Footer>
+	            <Button onClick={this.close}>Close</Button>
+	          </Modal.Footer>
+	        </Modal>
+	      </div>
+	    );
   }
 });
-	ReactDOM.render(<MemberTable captions={captions} users={users} />, document.getElementById('member-table'));
+ReactDOM.render(<MemberTable captions={captions} users={users} />, document.getElementById('member-table'));
