@@ -14,5 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/info', function () {
+    return view('phpinfo');
+});
 
 Route::resource('bills', 'BillsController');
+Route::resource('members', 'MembersController');
+Route::get('members/search', 'MembersController@search');

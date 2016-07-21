@@ -40,6 +40,9 @@
             <div class="content">
                 <div class="title">Laravel 5</div>
             </div>
+            <div>
+              <?php echo phpinfo(); ?>
+            </div>
         </div>
     </body>
 </html>

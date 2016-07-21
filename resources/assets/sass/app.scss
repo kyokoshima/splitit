@@ -1,6 +1,6 @@
 // http://ironodatinfo/rgb.php?color=EF845C
 // #EF845C
-// 
+//
 
 @import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
 $body-bg: #f5f1e9;
@@ -39,6 +39,29 @@ body {
 #member-table {
 	margin: 0 auto 12px;
 	width: 95%;
+}
+
+
+.modal-body {
+	overflow: hidden;
+}
+
+.example-enter {
+  opacity: 0.01;
+  transition: opacity .5s ease-in;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+}
+
+.example-leave {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
 }
 @media (max-width: $screen-sm-min) {
 
